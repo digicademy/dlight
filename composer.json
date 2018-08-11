@@ -1,7 +1,7 @@
 {
   "name": "digicademy/dlight",
   "type": "library",
-  "description": "DLight - Domain Driven Design Light",
+  "description": "DLight - Domain Driven Design Microframework",
   "homepage": "https://github.com/digicademy/dlight",
   "license": "MIT",
   "authors": [

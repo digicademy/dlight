@@ -1,8 +1,14 @@
 {% extends "base.html" %}
 
-{% block title %}DLight - XML Testpage{% endblock %}
+{% block title %}
+    {{ page.title }}
+{% endblock %}
+
+{% block header %}
+{% endblock %}
 
 {% block content %}
     <section class="twelve columns maincontent">
+        {{ page.content|raw }}
     </section>
 {% endblock %}

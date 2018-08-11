@@ -4,7 +4,7 @@ namespace Digicademy\DLight\Factory;
 /*********************************************************************************************
  * Copyright notice
  *
- * DLight - Domain Driven Design Light
+ * DLight - Domain Driven Design Microframework
  *
  * @copyright 2018 Torsten Schrade <Torsten.Schrade@adwmainz.de>
  * @copyright 2018 Academy of Sciences and Literature | Mainz

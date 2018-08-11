@@ -4,7 +4,7 @@ namespace Digicademy\DLight\Service;
 /*********************************************************************************************
  * Copyright notice
  *
- * DLight - Domain Driven Design Light
+ * DLight - Domain Driven Design Microframework
  *
  * @copyright 2018 Torsten Schrade <Torsten.Schrade@adwmainz.de>
  * @copyright 2018 Academy of Sciences and Literature | Mainz
@@ -33,7 +33,7 @@ class HttpService implements ApiInterface
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
-        $this->baseUri = $this->container->get('settings')['httpServiceBaseUri'];
+        $this->baseUri = $this->container->get('settings')['httpService']['baseUri'];
     }
 
     /**

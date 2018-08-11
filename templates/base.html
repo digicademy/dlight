@@ -6,22 +6,40 @@
         <meta name="author" content="AUTHOR"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>{% block title %}base.html{% endblock %} - TITLE.</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tinos:400,700" type="text/css"/>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,300,600" type="text/css"/>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rochester">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.css" type="text/css"/>
         {% block css %}
         {% endblock %}
-        <link rel="stylesheet" href="https://raw.githubusercontent.com/digicademy/dlight/master/files/css/style.css" type="text/css"/>
+        <!--
+<link rel="stylesheet" href="https://raw.githubusercontent.com/digicademy/dlight/master/files/css/style.css" type="text/css"/>
+
+-->
+        <link rel="stylesheet" href="{{ settings.basePath }}/css/style.css" type="text/css"/>
+
     </head>
     <body>
         <div class="container">
             <header class="row header">
                 {% block header %}
                 <div class="branding">
-                    <a href="{{ path_for('index.html') }}">
-                        <h1 class="title">Delight!</h1>
-                    </a>
+                    <h1 class="title">
+                        <a href="{{ path_for('index.html') }}">
+                            Delight!
+                        </a>
+                    </h1>
+                    <h2>DLight - Domain Driven Design Micro Framework</h2>
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="{{ path_for('test.html') }}">Testpage (XML)</a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/digicademy/dlight">GitHub</a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
                 {% endblock %}
             </header>

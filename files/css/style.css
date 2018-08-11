@@ -1,0 +1,33 @@
+.branding {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+	height: 100vh;
+}
+
+.branding h1 {
+	font-size: 24vw;
+	font-family: Rochester;
+}
+
+.branding h1 a {
+	color: black;
+	text-decoration: none;
+}
+
+.branding h2 {
+	font-size: 3.2vw;
+}
+
+nav ul {
+	position: relative;
+	list-style: none;
+	margin: 0 auto;
+	padding: 0;
+	width: 100%;
+}
+
+nav ul li {
+	display: inline-block;
+	margin: 0 2rem;
+}

@@ -8,7 +8,7 @@
     <teiHeader>
         <fileDesc>
             <titleStmt>
-                <title>DLight</title>
+                <title>DLight XML Testpage</title>
                 <respStmt>
                     <persName ref="https://orcid.org/0000-0002-0953-2818">
                         <forename>Torsten</forename>
@@ -29,15 +29,17 @@
                         This file is licensed under the terms of the Creative-Commons-License CC BY 4.0
                     </licence>
                 </availability>
-                <idno type="file">page.xml</idno>
+                <idno type="file">test.xml</idno>
             </publicationStmt>
         </fileDesc>
     </teiHeader>
     <text>
         <body>
             <div>
-                <ab rend="h1">DLight</ab>
-                <ab rend="h2">Domain Driven Design Light Framework</ab>
+                <ab rend="h1">What a delight!</ab>
+                <p>
+                    This HTML page is rendered from XML data.
+                </p>
             </div>
         </body>
     </text>
