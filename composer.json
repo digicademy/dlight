@@ -1,0 +1,33 @@
+{
+  "name": "digicademy/dlight",
+  "type": "library",
+  "description": "DLight - Domain Driven Design Light",
+  "homepage": "https://github.com/digicademy/dlight",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Torsten Schrade",
+      "email": "Torsten.Schrade@adwmainz.de",
+      "homepage": "http://orcid.org/0000-0002-0953-2818",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "ext-dom": "*",
+    "ext-xsl": "*",
+    "ext-SimpleXML": "*",
+    "ext-libxml": "*",
+    "slim/slim": "^3.0",
+    "slim/twig-view": "^2.3",
+    "guzzlehttp/guzzle": "~6.0",
+    "phpdocumentor/reflection-docblock": "^4.2"
+  },
+  "require-dev": {
+    "kint-php/kint": "^2.2"
+  },
+  "autoload": {
+    "psr-4" : {
+      "Digicademy\\DLight\\" : "src/"
+    }
+  }
+}
