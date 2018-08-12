@@ -76,9 +76,9 @@ Point your browser to the _public_ directory and you should be greeted with the 
 
 The following diagram gives an overview over DLights DDD architecture.
 
-![](files/img/delight-architecture.png)
+![](files/img/dlight-architecture.png)
 
-A more precise documentation is currently in the making.
+A more detailed documentation is currently in the making.
 
 ### License
 
