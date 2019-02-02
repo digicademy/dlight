@@ -6,8 +6,8 @@ namespace Digicademy\DLight\Mapper;
  *
  * DLight - Domain Driven Design Microframework
  *
- * @copyright 2018 Torsten Schrade <Torsten.Schrade@adwmainz.de>
- * @copyright 2018 Academy of Sciences and Literature | Mainz
+ * @copyright 2018-2019 Torsten Schrade <Torsten.Schrade@adwmainz.de>
+ * @copyright 2018-2019 Academy of Sciences and Literature | Mainz
  * @license   https://raw.githubusercontent.com/digicademy/dlight/master/LICENSE (MIT License)
  *
  *********************************************************************************************/
@@ -85,11 +85,15 @@ class XmlDataMapper implements DataMapperInterface
      *
      * @throws \Psr\Container\ContainerExceptionInterface
      * @throws \Psr\Container\NotFoundExceptionInterface
+     * @throws \Exception
      */
     private function setObject($className)
     {
-        $object = 'Digicademy\\DLight\\Domain\\Model\\' . $className;
-        $this->object = new $object;
+        if (class_exists($className)) {
+            $this->object = new $className;
+        } else {
+            throw new \Exception('Class ' . htmlspecialchars($className) . ' not found.', 1549095420);
+        }
     }
 
     /**

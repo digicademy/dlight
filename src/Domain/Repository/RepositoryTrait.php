@@ -1,4 +1,5 @@
 <?php
+
 namespace Digicademy\DLight\Domain\Repository;
 
 /*********************************************************************************************
@@ -12,24 +13,19 @@ namespace Digicademy\DLight\Domain\Repository;
  *
  *********************************************************************************************/
 
-interface RepositoryInterface
+trait RepositoryTrait
 {
 
     /**
-     * @param $collection
-     * @param $identifier
+     * Gets the domain object for this repository.
+     * Class name is derived from FQN of this repository.
      *
-     * @return mixed
+     * @return string
      */
-    public function findByIdentifier($collection, $identifier);
-
-    /**
-     * @param string $collection
-     * @param string $query
-     *
-     * @return mixed
-     * @throws \Exception
-     */
-    public function findAll($collection, $query);
+     private function setDomainObject() {
+        $className = str_replace('Repository', 'Model', get_class($this));
+        $domainObject = strrev(preg_replace(strrev('/Model/'), '', strrev($className),1));
+        return $domainObject;
+     }
 
 }

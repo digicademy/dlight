@@ -1,13 +1,13 @@
 <?php
-namespace Digicademy\DLight\Service;
+namespace Digicademy\DLight\Persistence;
 
 /*********************************************************************************************
  * Copyright notice
  *
  * DLight - Domain Driven Design Microframework
  *
- * @copyright 2018 Torsten Schrade <Torsten.Schrade@adwmainz.de>
- * @copyright 2018 Academy of Sciences and Literature | Mainz
+ * @copyright 2018-2019 Torsten Schrade <Torsten.Schrade@adwmainz.de>
+ * @copyright 2018-2019 Academy of Sciences and Literature | Mainz
  * @license   https://raw.githubusercontent.com/digicademy/dlight/master/LICENSE (MIT License)
  *
  *********************************************************************************************/
@@ -15,16 +15,16 @@ namespace Digicademy\DLight\Service;
 use GuzzleHttp\Client as HttpClient;
 use Psr\Container\ContainerInterface;
 
-class HttpService implements ApiInterface
+class HttpBackend implements BackendInterface
 {
 
-    protected $container;
+    private $container;
 
-    protected $baseUri;
+    private $baseUri;
+
+    private $options;
 
     /**
-     * HttpService constructor
-     *
      * @param ContainerInterface $container
      *
      * @throws \Psr\Container\ContainerExceptionInterface
@@ -33,37 +33,42 @@ class HttpService implements ApiInterface
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
-        $this->baseUri = $this->container->get('settings')['httpService']['baseUri'];
+        $this->baseUri = $this->container->get('settings')['connection']['baseUri'];
+        $this->options = $this->container->get('settings')['connection']['options'];
     }
 
     /**
-     * @param string $identifier
      * @param string $collection
      *
      * @return string
      *
-     * @throws \InvalidArgumentException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function fetchResourceByIdentifier($identifier, $collection)
+    public function readAll($collection)
     {
-        $httpClient = new HttpClient(['base_uri' => $this->baseUri . $collection . '/']);
-        $response = (string)$httpClient->request('GET', $identifier)->getBody();
+        $this->options['base_uri'] = $this->baseUri;
+        $httpClient = new HttpClient($this->options);
+
+        $response = (string)$httpClient->request('GET', $collection)->getBody();
 
         return $response;
     }
 
     /**
      * @param string $collection
+     * @param string $identifier
      *
      * @return string
      *
+     * @throws \InvalidArgumentException
      * @throws \GuzzleHttp\Exception\GuzzleException
      */
-    public function fetchAllResources($collection)
+    public function readByIdentifier($collection, $identifier)
     {
-        $httpClient = new HttpClient(['base_uri' => $this->baseUri]);
-        $response = (string)$httpClient->request('GET', $collection . '/')->getBody();
+        $this->options['base_uri'] = $this->baseUri . $collection;
+        $httpClient = new HttpClient($this->options);
+
+        $response = (string)$httpClient->request('GET', $identifier)->getBody();
 
         return $response;
     }

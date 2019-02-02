@@ -6,8 +6,11 @@ $config['addContentLengthHeader'] = false;
 
 $config['frameworkPath'] = str_replace('config', '', __DIR__);
 
-$config['httpService'] = [
-    'baseUri' => 'https://raw.githubusercontent.com/digicademy/dlight/master/'
+$config['backend'] = [
+    'Digicademy\DLight\Domain\Repository\PageRepository' => [
+        'baseUri' => 'https://raw.githubusercontent.com/digicademy/dlight/master/',
+        'options' => []
+    ]
 ];
 
 $config['xslt'] = [

@@ -2,7 +2,7 @@
 
 // MODEL
 
-$container['Page'] = function($c) {
+$container['Page'] = function() {
     $page = new \Digicademy\DLight\Domain\Model\Page;
     return $page;
 };
@@ -10,8 +10,9 @@ $container['Page'] = function($c) {
 // REPOSITORY
 
 $container['PageRepository'] = function($c) {
-    $objectFactory = new \Digicademy\DLight\Domain\Repository\PageRepository($c);
-    return $objectFactory;
+    $c->settings['connection'] = $c->settings['backend']['Digicademy\DLight\Domain\Repository\PageRepository'];
+    $pageRepository = new \Digicademy\DLight\Domain\Repository\PageRepository($c);
+    return $pageRepository;
 };
 
 // FACTORY
@@ -33,50 +34,50 @@ $container['XmlDataMapper'] = function($c) {
     return $xmlDataMapper;
 };
 
-// SERVICE
+// BACKEND
 
-$container['HttpService'] = function($c) {
-    $httpService = new \Digicademy\DLight\Service\HttpService($c);
-    return $httpService;
+$container['HttpBackend'] = function($c) {
+    $httpBackend = new \Digicademy\DLight\Persistence\HttpBackend($c);
+    return $httpBackend;
 };
 
 // PROCESSOR
 
-$container['UppercaseProcessor'] = function($c) {
+$container['UppercaseProcessor'] = function() {
     $uppercaseProcessor = new \Digicademy\DLight\Processor\UppercaseProcessor;
     return $uppercaseProcessor;
 };
 
 // STORAGE
 
-$container['ObjectStorage'] = function($c) {
+$container['ObjectStorage'] = function() {
     $objectStorage = new \SplObjectStorage;
     return $objectStorage;
 };
 
 // VIEW
 
-$container['view'] = function ($container) {
+$container['view'] = function ($c) {
 
     // set template directory
-    if ($container->settings['twig']['templateDir']) {
-        $twigTemplateDir = $container->settings['twig']['templateDir'];
+    if ($c->settings['twig']['templateDir']) {
+        $twigTemplateDir = $c->settings['twig']['templateDir'];
     } else {
         $twigTemplateDir = __DIR__ . '/../templates';
     }
 
     // instantiate Twig View
     $view = new \Slim\Views\Twig($twigTemplateDir, [
-        'cache' => $container->settings['twig']['cache'],
-        'debug' => $container->settings['twig']['debug']
+        'cache' => $c->settings['twig']['cache'],
+        'debug' => $c->settings['twig']['debug']
     ]);
 
     // enable Twig debugging
     $view->addExtension(new Twig_Extension_Debug());
 
     // add Slim router to Twig
-    $basePath = rtrim(str_ireplace('index.php', '', $container['request']->getUri()->getBasePath()), '/');
-    $view->addExtension(new Slim\Views\TwigExtension($container['router'], $basePath));
+    $basePath = rtrim(str_ireplace('index.php', '', $c['request']->getUri()->getBasePath()), '/');
+    $view->addExtension(new Slim\Views\TwigExtension($c['router'], $basePath));
 
     return $view;
 };

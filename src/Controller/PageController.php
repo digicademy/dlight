@@ -6,8 +6,8 @@ namespace Digicademy\DLight\Controller;
  *
  * DLight - Domain Driven Design Microframework
  *
- * @copyright 2018 Torsten Schrade <Torsten.Schrade@adwmainz.de>
- * @copyright 2018 Academy of Sciences and Literature | Mainz
+ * @copyright 2018-2019 Torsten Schrade <Torsten.Schrade@adwmainz.de>
+ * @copyright 2018-2019 Academy of Sciences and Literature | Mainz
  * @license   https://raw.githubusercontent.com/digicademy/dlight/master/LICENSE (MIT License)
  *
  *********************************************************************************************/
@@ -71,7 +71,7 @@ class PageController
      */
     public function testAction(Request $request, Response $response, $args)
     {
-        $page = $this->pageRepository->findByIdentifier('Page', 'data', 'test.xml');
+        $page = $this->pageRepository->findByIdentifier('data/', 'test.xml');
 
         $settings = [
             'basePath' => $request->getUri()->getBasePath(),

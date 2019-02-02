@@ -17,13 +17,13 @@
     "ext-xsl": "*",
     "ext-SimpleXML": "*",
     "ext-libxml": "*",
-    "slim/slim": "^3.0",
-    "slim/twig-view": "^2.3",
-    "guzzlehttp/guzzle": "~6.0",
-    "phpdocumentor/reflection-docblock": "^4.2"
+    "slim/slim": "^3.12",
+    "slim/twig-view": "^2.4",
+    "guzzlehttp/guzzle": "^6.3",
+    "phpdocumentor/reflection-docblock": "^4.3"
   },
   "require-dev": {
-    "kint-php/kint": "^2.2"
+    "kint-php/kint": "^3.1"
   },
   "autoload": {
     "psr-4" : {
