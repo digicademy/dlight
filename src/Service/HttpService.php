@@ -41,7 +41,9 @@ class HttpService implements ApiInterface
      * @param string $collection
      *
      * @return string
-     * @throws
+     *
+     * @throws \InvalidArgumentException
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function fetchResourceByIdentifier($identifier, $collection)
     {
@@ -55,7 +57,8 @@ class HttpService implements ApiInterface
      * @param string $collection
      *
      * @return string
-     * @throws
+     *
+     * @throws \GuzzleHttp\Exception\GuzzleException
      */
     public function fetchAllResources($collection)
     {
