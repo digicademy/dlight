@@ -254,8 +254,6 @@ class XmlDataMapper implements DataMapperInterface
                     $styleSheets[] = $stylesheetDir . trim($transformation);
                 }
                 $result = XmlService::transform($this->value, $styleSheets);
-                $result = str_replace('<transformation_root>', '', $result);
-                $result = str_replace('</transformation_root>', '', $result);
                 $this->value = $result;
             }
         }
@@ -306,7 +304,7 @@ class XmlDataMapper implements DataMapperInterface
                 foreach ($this->value as $element) {
                     $value .= $element->asXml();
                 }
-                $this->value = '<transformation_root>' . $value . '</transformation_root>';
+                $this->value = str_replace('<?xml version="1.0"?>' . "\n", '', $value);
                 break;
             case 'string':
                 if (is_array($this->value)) {
